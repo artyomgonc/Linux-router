@@ -27,13 +27,10 @@ done
 cp ./config-files/udhcpd_opendns.conf /etc/udhcpd.conf
 cp ./config-files/udhcpd /etc/default
 cp ./config-files/udhcpd.service /lib/systemd/system/
+
 systemctl enable udhcpd.service
+
 cp ./config-files/interfaces /etc/network
-
-readonly DEFAULTPWD="12345678"
-readonly DEFAULTSSID="Linux-Router"
-readonly DEFAULTCHANNEL=6
-
 cp ./config-files/hostapd.conf /etc/hostapd
 cp ./config-files/hostapd /etc/default
 cp ./config-files/sysctl.conf /etc
