@@ -31,7 +31,33 @@ cp ./config-files/udhcpd.service /lib/systemd/system/
 systemctl enable udhcpd.service
 
 cp ./config-files/interfaces /etc/network
-cp ./config-files/hostapd.conf /etc/hostapd
+
+_PASSWORD1="0"
+_PASSWORD2="1"
+echo -e "${COL}
+read -r -p "Enter name of your network (SSID): " _SSID
+echo
+read -r -s -p "Enter a new password at least 8 characters long (length is not checked): " _PASSWORD1
+echo
+read -r -s -p "Repeat your password again: " _PASSWORD2
+echo
+while [ ${_PASSWORD1} != ${_PASSWORD2} ]
+do
+	echo "Passwords are different. Try again."\
+	echo
+	read -r -s -p "Please enter a new password at least 8 characters long (length is not checked): " _PASSWORD1
+	echo
+	read -r -s -p "Please enter the new password again: " _PASSWORD2
+	echo
+done
+
+echo -e "${NC}"
+
+CONTENTS=$(<./config-files/hostapd.conf)
+CONTENTS=${CONTENTS//wpa_passphrase=12345678/wpa_passphrase=${_PASSWORD1}}
+CONTENTS=${CONTENTS//ssid=Linux-Router/ssid=${_SSID}}
+echo "${CONTENTS}" > /etc/hostapd/hostapd.conf
+
 cp ./config-files/hostapd /etc/default
 cp ./config-files/sysctl.conf /etc
 cp ./config-files/iptables.ipv4.nat /etc
@@ -44,7 +70,7 @@ update-rc.d hostapd enable
 service udhcpd start
 update-rc.d udhcpd enable
 
-sudo echo -e "${COL}Linux-router configured! Your computer will reboot in a few seconds.${NC}"
+echo -e "${COL}Linux-router configured! Your computer will reboot in a few seconds.${NC}"
 
 sleep 5
 reboot
