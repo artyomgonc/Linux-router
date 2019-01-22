@@ -34,7 +34,7 @@ cp ./config-files/interfaces /etc/network
 
 _PASSWORD1="0"
 _PASSWORD2="1"
-echo -e "${COL}
+echo -e "${COL}"
 read -r -p "Enter name of your network (SSID): " _SSID
 echo
 read -r -s -p "Enter a new password at least 8 characters long (length is not checked): " _PASSWORD1
