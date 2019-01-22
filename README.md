@@ -12,7 +12,7 @@ To use your Linux-running PC as a router without losing fully-working system you
   - Ethernet port in your computer connected with this cable
   
   - Wi-Fi adapter in you computer 
-  >> USB Wi-Fi not yet supported
+    > USB Wi-Fi not yet supported
 
 ## Installation
 
