@@ -1,7 +1,18 @@
 # Linux-router
 This app allows you to use your Linux computer as Wi-Fi router without losing full system functionality
 
+## Description or how it works
 
+## Needen components
+
+To use your Linux-running PC as a router without losing fully-working system you need:
+
+  - Ethernet cable with internet in it
+  
+  - Ethernet port in your computer connected with this cable
+  
+  - Wi-Fi adapter in you computer 
+  >> USB Wi-Fi not yet supported
 
 ## Installation
 
